@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 from . import util
-import markdown2
+import markdown2, random
 
 
 def index(request):
@@ -79,3 +79,12 @@ def edit_page(request, title):
             "title": title,
             "content": content
         })
+    
+def random_page(request):
+    entries = util.list_entries()
+    
+    # Select a random entry from the list
+    random_entry = random.choice(entries)
+    
+    # Redirect the user to the randomly selected entry page
+    return redirect(f"/wiki/{random_entry}")
