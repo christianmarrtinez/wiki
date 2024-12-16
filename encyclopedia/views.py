@@ -58,3 +58,24 @@ def create_page(request):
         return redirect("entry_page", title=title)
 
     return render(request, "encyclopedia/create.html")
+
+def edit_page(request, title):
+    # Get the current content of the entry
+    content = util.get_entry(title)
+
+    if request.method == "POST":
+        # Get the updated content from the form
+        new_content = request.POST["content"]
+
+        # Save the updated content
+        util.save_entry(title, new_content)
+
+        # Redirect to the updated entry page
+        return redirect(f"/wiki/{title}")
+
+    else:
+        # Render the edit page with the existing content pre-filled
+        return render(request, "encyclopedia/edit_page.html", {
+            "title": title,
+            "content": content
+        })
