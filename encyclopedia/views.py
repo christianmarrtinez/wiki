@@ -37,3 +37,24 @@ def search(request):
         "matches": matches,
         "query": query
     })
+
+def create_page(request):
+    if request.method == "POST":
+        title = request.POST.get("title")
+        content = request.POST.get("content")
+
+        # Check if the entry already exists
+        if util.get_entry(title):
+            return render(request, "encyclopedia/create.html", {
+                "error": "An entry with this title already exists.",
+                "title": title,
+                "content": content
+            })
+        
+        content_with_title = f"# {title}\n\n{content}"
+
+        # Save the new entry
+        util.save_entry(title, content_with_title)
+        return redirect("entry_page", title=title)
+
+    return render(request, "encyclopedia/create.html")
