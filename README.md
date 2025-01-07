@@ -1,10 +1,13 @@
-This Django-based project is a dynamic encyclopedia platform that allows users to view, create, search, edit, and explore encyclopedia entries stored in Markdown format. Key features include:
-
 Entry Pages: Renders encyclopedia entries with Markdown-to-HTML conversion for a seamless viewing experience.
+
 Search Functionality: Supports exact and substring matching for intuitive navigation to relevant entries.
 CRUD Operations: Enables users to create, edit, and save entries with pre-filled editing forms and duplicate prevention.
+
 Random Entry: Directs users to a randomly selected encyclopedia page for discovery.
+
 User-Friendly Design: Implements responsive templates using Django views and templates for consistent navigation.
+
+
 This project showcases my skills in Python, Django, Markdown processing, and dynamic web app development.
 
 
